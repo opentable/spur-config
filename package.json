@@ -1,0 +1,17 @@
+{
+  "name": "spur-config",
+  "version": "0.0.1",
+  "description": "Spur config management module",
+  "dependencies": {
+    "coffee-script": "1.8.0",
+    "lodash": "latest",
+    "spur-ioc": "latest",
+    "require-all": "^1.0.0",
+    "mkdirp": "^0.5.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.0.1",
+    "chai": "^1.10.0",
+    "sinon": "^1.12.1"
+  }
+}
