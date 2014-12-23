@@ -5,7 +5,6 @@
   "dependencies": {
     "coffee-script": "1.8.0",
     "lodash": "latest",
-    "spur-ioc": "latest",
     "require-all": "^1.0.0",
     "mkdirp": "^0.5.0"
   },

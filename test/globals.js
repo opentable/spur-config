@@ -2,8 +2,7 @@ var path              = require("path");
 global.chai           = require('chai');
 global.expect         = chai.expect
 global.srcDir         = path.resolve(__dirname, "../src");
+global.rootDir        = path.resolve(__dirname, "../");
 
 process.env.NODE_ENV = "test";
-global.injector = require(path.join(srcDir, "injector"));
-
 process.setMaxListeners(1000);
