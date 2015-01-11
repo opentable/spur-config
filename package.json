@@ -1,10 +1,44 @@
 {
   "name": "spur-config",
-  "version": "0.0.1",
   "description": "Spur config management module",
+  "version": "0.0.1",
+  "author": {
+    "name": "Siavash Etemadieh",
+    "email": "ssetem@googlemail.com"
+  },
+  "contributors": [
+    {
+      "name": "Agustin Colchado",
+      "email": "agustin@colchado.com"
+    },
+    {
+      "name": "Joseph McElroy",
+      "email": "phoey1@gmail.com"
+    }
+  ],
+  "keywords": [
+    "spur",
+    "config",
+    "configuration"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha --opts ./test/mocha.opts ./test/"
+  },
+  "bugs": {
+    "url": "https://github.com/opentable/spur-config/issues"
+  },
+  "homepage": "https://github.com/opentable/spur-config",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/opentable/spur-config.git"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
   "dependencies": {
     "coffee-script": "1.8.0",
-    "lodash": "latest",
+    "lodash": "2.4.1",
     "require-all": "^1.0.0",
     "mkdirp": "^0.5.0"
   },
