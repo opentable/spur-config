@@ -1,6 +1,6 @@
 {
   "name": "spur-config",
-  "description": "Spur config management module",
+  "description": "Configuration framework to help with large amount of configurations.",
   "version": "0.0.1",
   "author": {
     "name": "Siavash Etemadieh",
