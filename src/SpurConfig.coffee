@@ -34,7 +34,6 @@ class SpurConfig
       console.error e.stack
       throw e
 
-
   loadPlugins:(folderPath)->
     if fs.existsSync(folderPath)
       pluginsObject = requireAll({
@@ -50,7 +49,6 @@ class SpurConfig
           @plugins[pluginName] = plugin.bind(@)
         else
           @loadPluginsByObject(plugin)
-
 
   deepExtend:(ob1={}, ob2={})->
     @baseObject = _.merge(ob1, ob2)
