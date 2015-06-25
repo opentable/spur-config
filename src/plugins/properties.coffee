@@ -1,2 +1,2 @@
 module.exports = (props)->
-  @deepExtend @baseObject, props
+  @deepExtend props

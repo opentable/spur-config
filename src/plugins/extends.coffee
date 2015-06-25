@@ -1,4 +1,5 @@
-module.exports = (configName)->
-  config =  @loadConfig(configName)
-  @deepExtend @baseConfig, config
+module.exports = (configNames...)->
+  for configName in configNames
+    config =  @loadConfig(configName)
+    @deepExtend config
 

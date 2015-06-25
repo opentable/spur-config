@@ -5,7 +5,7 @@ requireAll = require "require-all"
 
 class SpurConfig
 
-  constructor:(@folderPath, @configName)->
+  constructor:(@folderPath, @configName=@getEnv())->
     @baseObject = {}
     @defaultPluginsPath = path.join(__dirname, "./plugins")
     @customPluginsPath = path.join(@folderPath, "/plugins")
@@ -17,7 +17,7 @@ class SpurConfig
     spurConfig
 
   getEnv:()->
-    process.env.NODE_ENV
+    process.env.NODE_ENV or "development"
 
   @loadEnv:(folderPath)->
     @load(folderPath, @getEnv())
@@ -53,7 +53,7 @@ class SpurConfig
 
 
   deepExtend:(ob1={}, ob2={})->
-    @baseObject = _.merge(ob1, ob2)
+    @baseObject = _.merge({}, @baseObject, ob1, ob2)
 
   getConfig:()->
     @baseObject
