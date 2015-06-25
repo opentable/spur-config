@@ -23,7 +23,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "test": "mocha --opts ./test/mocha.opts ./test/"
+    "test": "mocha --opts ./test/mocha.opts ./test/unit"
   },
   "bugs": {
     "url": "https://github.com/opentable/spur-config/issues"
