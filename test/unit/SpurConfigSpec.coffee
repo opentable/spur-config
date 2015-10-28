@@ -1,14 +1,12 @@
-SpurConfig          = require "#{srcDir}/SpurConfig"
-SpurConfigGenerator = require "#{srcDir}/SpurConfigGenerator"
-path                = require "path"
-
-SpurConfigIndex              = require "#{rootDir}"
-SpurConfigGeneratorIndex     = require "#{rootDir}/generator"
+path                     = require "path"
+SpurConfig               = require "#{srcDir}/SpurConfig"
+SpurConfigGenerator      = require "#{srcDir}/SpurConfigGenerator"
+SpurConfigIndex          = require "#{rootDir}"
+SpurConfigGeneratorIndex = require "#{rootDir}/generator"
 
 describe "SpurConfig", ->
 
   beforeEach ->
-
     @fixtures = path.join(__dirname, "../fixtures")
     @generated = path.join(__dirname, "../generated")
 
@@ -18,15 +16,13 @@ describe "SpurConfig", ->
     expect(SpurConfig).to.equal SpurConfigIndex
     expect(SpurConfigGenerator).to.equal SpurConfigGeneratorIndex
 
-  it "root js files should have correct references", ->
-
-
   it "load()", ->
     conf = SpurConfig.load path.join(__dirname, "../fixtures"), "ci"
     console.log conf.toJSONString()
 
   it "load()", ->
     conf = SpurConfig.load path.join(__dirname, "../fixtures")
+
     expect(conf.baseObject).to.deep.equal {
       "test": true
     }
@@ -64,6 +60,7 @@ describe "SpurConfig", ->
 
   it "sub directories", ->
     conf = SpurConfig.load path.join(__dirname, "../fixtures"), "nested"
+
     expect(conf.baseObject).to.deep.equal {
       "test": true,
       "urls": {
@@ -72,5 +69,3 @@ describe "SpurConfig", ->
       },
       "Port": 8080
     }
-
-

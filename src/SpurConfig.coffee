@@ -34,13 +34,13 @@ class SpurConfig
       console.error e.stack
       throw e
 
-
   loadPlugins:(folderPath)->
     if fs.existsSync(folderPath)
       pluginsObject = requireAll({
         dirname:folderPath
         filter:  /(.+)\.(js|coffee)$/
       })
+
       @loadPluginsByObject(pluginsObject)
 
   loadPluginsByObject:(pluginsObject)->
@@ -50,7 +50,6 @@ class SpurConfig
           @plugins[pluginName] = plugin.bind(@)
         else
           @loadPluginsByObject(plugin)
-
 
   deepExtend:(ob1={}, ob2={})->
     @baseObject = _.merge({}, @baseObject, ob1, ob2)

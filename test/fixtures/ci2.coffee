@@ -7,4 +7,3 @@ module.exports = ->
 
   @properties
     Port:"8081"
-

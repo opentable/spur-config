@@ -1,2 +1,2 @@
-require("coffee-script/register")
-module.exports = require("./src/SpurConfig")
+require("coffee-script/register");
+module.exports = require("./src/SpurConfig");
