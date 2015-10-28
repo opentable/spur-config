@@ -1,7 +1,7 @@
 {
   "name": "spur-config",
   "description": "Configuration framework to help manage complex application configurations in Node.js.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "Siavash Etemadieh",
     "email": "ssetem@googlemail.com"
