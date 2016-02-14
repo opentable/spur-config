@@ -25,3 +25,10 @@ indent_size = 2
 
 [node_modules/**.js]
 codepaint = false
+
+[node_modules/**.coffee]
+codepaint = false
+
+[test/generated/**.js]
+trim_trailing_whitespace = false
+insert_final_newline = false

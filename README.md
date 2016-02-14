@@ -4,6 +4,7 @@ Configuration framework to help manage complex application configurations in [No
 
 [![NPM version](https://badge.fury.io/js/spur-config.png)](http://badge.fury.io/js/spur-config)
 [![Build Status](https://travis-ci.org/opentable/spur-config.png?branch=master)](https://travis-ci.org/opentable/spur-config)
+[![Coverage Status](https://coveralls.io/repos/github/opentable/spur-config/badge.svg?branch=master)](https://coveralls.io/github/opentable/spur-config?branch=master)
 
 # About the Spur Framework
 
