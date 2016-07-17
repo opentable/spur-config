@@ -6,6 +6,5 @@
 /.travis.yml
 /.npmignore
 
-/src
 /test
 /coverage

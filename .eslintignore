@@ -1,4 +1,4 @@
-dist/**/*.js
+lib/**/*.js
 test/fixtures/**/*.js
 test/generated/*.js
 test/generated/**/*.js

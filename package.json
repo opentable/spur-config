@@ -2,7 +2,8 @@
   "name": "spur-config",
   "description": "Configuration framework to help manage complex application configurations in Node.js.",
   "version": "0.1.1",
-  "main": "dist/SpurConfig.js",
+  "main": "lib/SpurConfig",
+  "jsnext:main": "./src/SpurConfig",
   "author": {
     "name": "Agustin Colchado",
     "email": "agustin@colchado.com"
@@ -15,8 +16,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "babel src -d dist --source-maps",
-    "dev": "babel --watch src -d dist",
+    "build": "babel src -d lib --source-maps",
+    "dev": "babel --watch src -d lib",
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "babel-node --debug node_modules/mocha/bin/_mocha ./test/**/*Spec.js",
