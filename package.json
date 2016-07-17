@@ -15,11 +15,12 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "babel src -d dist",
+    "build": "babel src -d dist --source-maps",
     "dev": "babel --watch src -d dist",
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "babel-node --debug node_modules/mocha/bin/_mocha ./test/",
+    "test": "babel-node --debug node_modules/mocha/bin/_mocha ./test/**/*Spec.js",
+    "test-watch": "babel-node --debug node_modules/mocha/bin/_mocha --watch ./test/**/*Spec.js",
     "precoveralls": "npm run lint",
     "coveralls": "babel-node node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha --report lcovonly ./test/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "build-and-test": "npm run build && npm test"
