@@ -1,6 +1,6 @@
 module.exports = ()->
 
-  @extends "test"
+  @extends "ci"
   @extends "sub/urls"
 
   @properties

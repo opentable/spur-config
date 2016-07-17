@@ -1,6 +1,6 @@
 module.exports = function() {
   return this.properties({
-    environment: 'nested',
+    environment: 'test',
     test: true
   });
 };
