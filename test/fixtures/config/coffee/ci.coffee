@@ -6,4 +6,5 @@ module.exports = ->
     type:"console"
 
   @properties
-    Port:"8081"
+    environment: "ci"
+    prop1:"value1"
