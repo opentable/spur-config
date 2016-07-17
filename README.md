@@ -42,94 +42,108 @@ $ npm install spur-config --save
 
 ### Configuration files
 
-#### `src/config/default.coffee`
+#### `src/config/default.js`
 
-```coffeescript
-module.exports = ()->
+```javascript
+module.exports = function() {
 
-  @properties {
-    environment: "default"
+  return this.properties({
+    environment: 'default',
     port: 8080
-  }
+  });
+
+}
 ```
 
-#### `src/config/shared-deployed.coffee`
+#### `src/config/shared-deployed.js`
 
-```coffeescript
-module.exports = ()->
+```javascript
+module.exports = function() {
 
-  @properties {
-    shared:
+  return this.properties({
+    shared: {
       someProp: 123
-  }
+    }
+  });
+
+}
 ```
 
-#### `src/config/development.coffee` (default)
+#### `src/config/development.js` (default)
 
-```coffeescript
-module.exports = ()->
+```javascript
+module.exports = function() {
 
-  @extends "default"
+  this.extends('default');
 
-  @properties {
-    environment: "default"
-  }
+  return this.properties({
+    environment: 'default'
+  });
+
+}
 ```
 
-#### `src/config/production.coffee`
+#### `src/config/production.js`
 
-```coffeescript
-module.exports = ()->
+```javascript
+module.exports = function() {
 
   # Extend multiple files
-  @extends "default", "shared-deployed"
+  this.extends('default', 'shared-deployed');
 
-  @properties {
-    environment: "production"
+  return this.properties({
+    environment: 'production',
     port: process.env.PORT or 9000
-  }
+  });
+
+}
 ```
 
 ### `Standalone use`
 
 This example shows how to manually load configuration into
 
-```coffeescript
-spurConfig = require "spur-config"
+```javascript
+import spurConfig from 'spur-config';
+
+const configDirectory = path.join(__dirname, "src/config");
 
 # load specific environment file
-config = SpurConfig.load path.join(__dirname, "src/config"), "production"
+const config = SpurConfig.load(configDirectory, "production");
 
 # loads configuration specified in NODE_ENV environment variable
-config = SpurConfig.load path.join(__dirname, "src/config")
+const config = SpurConfig.load(configDirectory);
 ```
 
 ### `With spur-ioc auto-registration`
 
 This example loads the configuration into an injector/module and makes it available as the `config` dependency.
 
-#### `src/injector.coffee`
-```coffeescript
-spur           = require "spur-ioc"
-spurConfig     = require "spur-config"
-registerConfig = require "spur-common/registerConfig"
+#### `src/injector.js`
+```javascript
+import spur from 'spur-ioc';
+import spurConfig from 'spur-config';
+import registerConfig from 'spur-common/registerConfig';
 
-module.exports = ()->
+module.exports = function() {
 
-  ioc = spur.create("test-application")
+  const ioc = spur.create('test-application');
+  const configDirectory = path.join(__dirname, './config');
 
-  registerConfig(ioc, path.join(__dirname, "./config"))
+  registerConfig(ioc, configDirectory);
 
-  return ioc
+  return ioc;
+}
 ```
 
-#### `src/services/TestConfig.coffee`
+#### `src/services/TestConfig.js`
 
-```coffeescript
-module.exports = (config)->
+```javascript
+module.exports = function(config) {
 
-  console.log(config)
+  console.log(config);
 
+}
 ```
 
 # Contributing
@@ -147,14 +161,21 @@ Please send in pull requests and they will be reviewed in a timely manner. Pleas
 
 The majority of the settings are controlled using an [EditorConfig](.editorconfig) configuration file. To use it [please download a plugin](http://editorconfig.org/#download) for your editor of choice.
 
+In addition we use **[ESLint](http://eslint.org/)** to enforce some of the JavaScript rules. To enable on your editor, please install one of the **[editor plugins](http://eslint.org/docs/user-guide/integrations#editors)**.
+
+If your editor does not have ESLint integration, the test commands below will run them and fail your build.
+
 ## All tests should pass
 
-To run the test suite, first install the dependancies, then run `npm test`
+Execute the following the install the dependencies, build and test with the following.
 
 ```bash
 $ npm install
+$ npm run build
 $ npm test
 ```
+
+View the `package.json`'s `scripts` section for a list of all the other commands.
 
 # License
 
