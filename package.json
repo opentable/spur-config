@@ -8,6 +8,10 @@
     "name": "Agustin Colchado",
     "email": "agustin@colchado.com"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "tag": "next"
+  },
   "keywords": [
     "spur",
     "spur-framework",
@@ -20,10 +24,12 @@
     "dev": "babel --watch src -d lib",
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "babel-node --debug node_modules/mocha/bin/_mocha ./test/**/*Spec.js",
-    "test-watch": "babel-node --debug node_modules/mocha/bin/_mocha --watch ./test/**/*Spec.js",
-    "precoveralls": "npm run lint",
-    "coveralls": "babel-node node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha --report lcovonly ./test/**/*Spec.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "test-unit": "babel-node --debug node_modules/mocha/bin/_mocha ./test/unit/",
+    "test-integration": "babel-node --debug node_modules/mocha/bin/_mocha ./test/integration/",
+    "test": "npm run test-unit && npm run test-integration",
+    "coverage": "babel-node node_modules/isparta/bin/isparta cover --report text --report html ./node_modules/mocha/bin/_mocha --report lcovonly -- ./test/unit/",
+    "precoveralls": "npm run build && npm run lint && npm run test-integration",
+    "coveralls": "npm run coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "build-and-test": "npm run build && npm test"
   },
   "bugs": {
@@ -48,7 +54,7 @@
     "chai": "^3.5.0",
     "coveralls": "^2.11.11",
     "eslint": "^2.4.0",
-    "eslint-config-spur": "~0.0.2",
+    "eslint-config-opentable": "^4.0.0",
     "eslint-plugin-import": "^1.8.1",
     "isparta": "^4.0.0",
     "mocha": "^2.4.5",
