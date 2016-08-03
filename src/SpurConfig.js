@@ -37,8 +37,10 @@ class SpurConfig {
       this.configFile.apply(this.plugins);
       return this.baseObject;
     } catch (e) {
+      /* eslint-disable no-console */
       console.error(`Couldn't load config ${this.folderPath}/${this.configName}`);
       console.error(e.stack);
+      /* eslint-enable no-console */
       throw e;
     }
   }
