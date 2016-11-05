@@ -9,8 +9,7 @@
     "email": "agustin@colchado.com"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "tag": "next"
+    "registry": "https://registry.npmjs.org"
   },
   "keywords": [
     "spur",
