@@ -1,7 +1,7 @@
 {
   "name": "spur-config",
   "description": "Configuration framework to help manage complex application configurations in Node.js.",
-  "version": "1.0.0-rc.3",
+  "version": "0.1.2",
   "main": "lib/SpurConfig",
   "jsnext:main": "./src/SpurConfig",
   "author": {
@@ -9,8 +9,7 @@
     "email": "agustin@colchado.com"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "tag": "next"
+    "registry": "https://registry.npmjs.org"
   },
   "keywords": [
     "spur",
