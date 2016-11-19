@@ -87,7 +87,7 @@ module.exports = function() {
 ```javascript
 module.exports = function() {
 
-  # Extend multiple files
+  // Extend multiple files
   this.extends('default', 'shared-deployed');
 
   return this.properties({
@@ -107,10 +107,10 @@ import spurConfig from 'spur-config';
 
 const configDirectory = path.join(__dirname, "src/config");
 
-# load specific environment file
+// load specific environment file
 const config = SpurConfig.load(configDirectory, "production");
 
-# loads configuration specified in NODE_ENV environment variable
+// loads configuration specified in NODE_ENV environment variable
 const config = SpurConfig.load(configDirectory);
 ```
 
