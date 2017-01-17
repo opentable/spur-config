@@ -2,7 +2,10 @@
 
 Configuration framework to help manage complex application configurations in [Node.js](http://nodejs.org/).
 
-[![NPM version](https://badge.fury.io/js/spur-config.png)](http://badge.fury.io/js/spur-config) [![Build Status](https://travis-ci.org/opentable/spur-config.png?branch=master)](https://travis-ci.org/opentable/spur-config)
+[![npm version](https://badge.fury.io/js/spur-config.svg)](http://badge.fury.io/js/spur-config)
+[![Build Status](https://travis-ci.org/opentable/spur-config.svg?branch=master)](https://travis-ci.org/opentable/spur-config)
+[![Dependencies](https://david-dm.org/opentable/spur-config.svg)](https://david-dm.org/opentable/spur-config)
+[![devDependency Status](https://david-dm.org/opentable/spur-config/dev-status.svg)](https://david-dm.org/opentable/spur-config?type=dev)
 
 # About the Spur Framework
 
@@ -38,6 +41,8 @@ $ npm install spur-config --save
 ```
 
 ## Usage
+
+Supports active Node versions in the [LTS Schedule](https://github.com/nodejs/LTS#lts-schedule). ([view current versions](.travis.yml))
 
 ### Configuration files
 
@@ -175,6 +180,8 @@ $ npm test
 ```
 
 View the `package.json`'s `scripts` section for a list of all the other commands.
+
+> Requires Node 4+ for dev tools, but we recommend using Node 6.
 
 # License
 

@@ -17,6 +17,8 @@
     "no-unused-expressions": 0,
     "max-len": 0,
     "arrow-body-style": 0,
-    "no-console": 0
+    "no-console": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-unresolved": 0
   }
 }
