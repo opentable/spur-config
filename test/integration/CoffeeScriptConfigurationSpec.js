@@ -1,5 +1,6 @@
 import path from 'path';
 import _ from 'lodash';
+
 const spurConfig = require('../../');
 const expectedData = require('./data/DataExpectations');
 
