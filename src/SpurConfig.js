@@ -1,9 +1,7 @@
-/* eslint-disable global-require */
-
-import fs from 'fs';
-import path from 'path';
-import _ from 'lodash';
-import requireAll from 'require-all';
+const fs = require('fs');
+const path = require('path');
+const _ = require('lodash');
+const requireAll = require('require-all');
 
 class SpurConfig {
 
@@ -90,4 +88,4 @@ class SpurConfig {
 
 }
 
-export default SpurConfig;
+module.exports = SpurConfig;

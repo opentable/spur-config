@@ -1,5 +1,4 @@
-import path from 'path';
-
+const path = require('path');
 const spurConfig = require('../../');
 const expectedData = require('./data/DataExpectations');
 

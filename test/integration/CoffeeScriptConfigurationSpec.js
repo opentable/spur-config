@@ -1,6 +1,5 @@
-import path from 'path';
-import _ from 'lodash';
-
+const path = require('path');
+const _ = require('lodash');
 const spurConfig = require('../../');
 const expectedData = require('./data/DataExpectations');
 

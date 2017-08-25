@@ -1,5 +1,5 @@
-import path from 'path';
-import SpurConfig from '../../src/SpurConfig';
+const path = require('path');
+const SpurConfig = require('../../src/SpurConfig');
 
 describe('SpurConfig', () => {
   beforeEach(function () {
