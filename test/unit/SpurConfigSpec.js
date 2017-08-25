@@ -1,11 +1,10 @@
-import path from 'path';
-import SpurConfig from '../../src/SpurConfig';
+const path = require('path');
+const SpurConfig = require('../../src/SpurConfig');
 
 describe('SpurConfig', () => {
   beforeEach(function () {
     this.srcBasePath = path.resolve(__dirname, '../../src/');
     this.jsFixtureConfigPath = path.resolve(__dirname, '../../test/fixtures/config/js/');
-    this.coffeeFixtureConfigPath = path.resolve(__dirname, '../../test/fixtures/config/coffee/');
     this.SpurConfig = SpurConfig;
 
     process.env.NODE_ENV = 'test';
@@ -107,14 +106,6 @@ describe('SpurConfig', () => {
       expect(config.environment).to.equal('nested');
       expect(config).to.have.property('urls');
       expect(config).to.have.property('prop1');
-    });
-
-    it('should load the simple test configuration from coffee source', function () {
-      const result = this.SpurConfig.load(this.coffeeFixtureConfigPath, 'test');
-      const config = result.getConfig();
-
-      expect(config.test).to.equal(true);
-      expect(config.coffee).to.equal(true);
     });
   });
 });

@@ -1,9 +1,9 @@
-/* eslint-disable global-require */
-
-import fs from 'fs';
-import path from 'path';
-import _ from 'lodash';
-import requireAll from 'require-all';
+const fs = require('fs');
+const path = require('path');
+const _forEach = require('lodash.foreach');
+const _isFunction = require('lodash.isfunction');
+const _merge = require('lodash.merge');
+const requireAll = require('require-all');
 
 class SpurConfig {
 
@@ -54,15 +54,15 @@ class SpurConfig {
     if (fs.existsSync(folderPath)) {
       const pluginsObject = requireAll({
         dirname: folderPath,
-        filter: /(.+)\.(js|coffee)$/
+        filter: /(.+)\.(js)$/
       });
       this.loadPluginsByObject(pluginsObject);
     }
   }
 
   loadPluginsByObject(pluginsObject) {
-    _.forEach(pluginsObject, (plugin, pluginName) => {
-      if (_.isFunction(plugin)) {
+    _forEach(pluginsObject, (plugin, pluginName) => {
+      if (_isFunction(plugin)) {
         this.plugins[pluginName] = plugin.bind(this);
       } else {
         this.loadPluginsByObject(plugin);
@@ -73,7 +73,7 @@ class SpurConfig {
   deepExtend(obj1, obj2) {
     const ob1 = obj1 || {};
     const ob2 = obj2 || {};
-    this.baseObject = _.merge({}, this.baseObject, ob1, ob2);
+    this.baseObject = _merge({}, this.baseObject, ob1, ob2);
   }
 
   getConfig() {
@@ -90,4 +90,4 @@ class SpurConfig {
 
 }
 
-export default SpurConfig;
+module.exports = SpurConfig;
