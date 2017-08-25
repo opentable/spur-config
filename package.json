@@ -33,7 +33,9 @@
     "url": "git://github.com/opentable/spur-config.git"
   },
   "dependencies": {
-    "lodash": "^4.13.1",
+    "lodash.foreach": "^4.5.0",
+    "lodash.isfunction": "^3.0.8",
+    "lodash.merge": "^4.6.0",
     "mkdirp": "^0.5.1",
     "require-all": "^2.0.0"
   },
