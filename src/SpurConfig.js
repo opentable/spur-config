@@ -52,7 +52,7 @@ class SpurConfig {
     if (fs.existsSync(folderPath)) {
       const pluginsObject = requireAll({
         dirname: folderPath,
-        filter: /(.+)\.(js|coffee)$/
+        filter: /(.+)\.(js)$/
       });
       this.loadPluginsByObject(pluginsObject);
     }
