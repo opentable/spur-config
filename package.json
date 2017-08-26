@@ -1,7 +1,7 @@
 {
   "name": "spur-config",
   "description": "Configuration framework to help manage complex application configurations in Node.js.",
-  "version": "1.0.4",
+  "version": "2.0.0-rc.1",
   "main": "./src/SpurConfig",
   "author": {
     "name": "Agustin Colchado",
