@@ -29,12 +29,12 @@ The Spur Framework is a collection of commonly used Node.JS libraries used to cr
 ## Installing
 
 `Standalone:`
-```bash
+```shell
 $ npm install spur-config --save
 ```
 
 `With dependency injection:`
-```bash
+```shell
 $ npm install spur-ioc --save
 $ npm install spur-common --save
 $ npm install spur-config --save
@@ -49,7 +49,7 @@ Supports active Node versions in the [LTS Schedule](https://github.com/nodejs/LT
 #### `src/config/default.js`
 
 ```javascript
-module.exports = function() {
+module.exports = function () {
 
   return this.properties({
     environment: 'default',
@@ -62,7 +62,7 @@ module.exports = function() {
 #### `src/config/shared-deployed.js`
 
 ```javascript
-module.exports = function() {
+module.exports = function () {
 
   return this.properties({
     shared: {
@@ -76,7 +76,7 @@ module.exports = function() {
 #### `src/config/development.js` (default)
 
 ```javascript
-module.exports = function() {
+module.exports = function () {
 
   this.extends('default');
 
@@ -90,7 +90,7 @@ module.exports = function() {
 #### `src/config/production.js`
 
 ```javascript
-module.exports = function() {
+module.exports = function () {
 
   // Extend multiple files
   this.extends('default', 'shared-deployed');
@@ -108,12 +108,12 @@ module.exports = function() {
 This example shows how to manually load configuration into
 
 ```javascript
-import spurConfig from 'spur-config';
+const spurConfig = require('spur-config');
 
-const configDirectory = path.join(__dirname, "src/config");
+const configDirectory = path.join(__dirname, 'src/config');
 
 // load specific environment file
-const config = SpurConfig.load(configDirectory, "production");
+const config = SpurConfig.load(configDirectory, 'production');
 
 // loads configuration specified in NODE_ENV environment variable
 const config = SpurConfig.load(configDirectory);
@@ -125,11 +125,11 @@ This example loads the configuration into an injector/module and makes it availa
 
 #### `src/injector.js`
 ```javascript
-import spur from 'spur-ioc';
-import spurConfig from 'spur-config';
-import registerConfig from 'spur-common/registerConfig';
+const spur = require('spur-ioc');
+const spurConfig = require('spur-config');
+const registerConfig = require('spur-common/registerConfig');
 
-module.exports = function() {
+module.exports = function () {
 
   const ioc = spur.create('test-application');
   const configDirectory = path.join(__dirname, './config');
@@ -143,7 +143,7 @@ module.exports = function() {
 #### `src/services/TestConfig.js`
 
 ```javascript
-module.exports = function(config) {
+module.exports = function (config) {
 
   console.log(config);
 
@@ -173,15 +173,12 @@ If your editor does not have ESLint integration, the test commands below will ru
 
 Execute the following the install the dependencies, build and test with the following.
 
-```bash
+```shell
 $ npm install
-$ npm run build
 $ npm test
 ```
 
 View the `package.json`'s `scripts` section for a list of all the other commands.
-
-> Requires Node 4+ for dev tools, but we recommend using Node 6.
 
 # License
 
