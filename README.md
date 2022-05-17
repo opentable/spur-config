@@ -2,10 +2,9 @@
 
 Configuration framework to help manage complex application configurations in [Node.js](http://nodejs.org/).
 
-[![npm version](https://badge.fury.io/js/spur-config.svg)](http://badge.fury.io/js/spur-config)
-[![Build Status](https://travis-ci.org/opentable/spur-config.svg?branch=master)](https://travis-ci.org/opentable/spur-config)
-[![Dependencies](https://david-dm.org/opentable/spur-config.svg)](https://david-dm.org/opentable/spur-config)
-[![devDependency Status](https://david-dm.org/opentable/spur-config/dev-status.svg)](https://david-dm.org/opentable/spur-config?type=dev)
+  [![NPM Version][npm-version-image]][npm-url]
+  [![NPM Install Size][npm-install-size-image]][npm-install-size-url]
+  [![NPM Downloads][npm-downloads-image]][npm-downloads-url]
 
 # About the Spur Framework
 
@@ -183,3 +182,10 @@ View the `package.json`'s `scripts` section for a list of all the other commands
 # License
 
 [MIT](LICENSE)
+
+[npm-downloads-image]: https://badgen.net/npm/dm/spur-config
+[npm-downloads-url]: https://npmcharts.com/compare/spur-config?minimal=true
+[npm-install-size-image]: https://badgen.net/packagephobia/install/spur-config
+[npm-install-size-url]: https://packagephobia.com/result?p=spur-config
+[npm-url]: https://npmjs.org/package/spur-config
+[npm-version-image]: https://badgen.net/npm/v/spur-config
