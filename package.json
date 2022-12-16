@@ -36,7 +36,6 @@
     "lodash.foreach": "^4.5.0",
     "lodash.isfunction": "^3.0.9",
     "lodash.merge": "^4.6.2",
-    "mkdirp": "^0.5.1",
     "require-all": "^2.0.0"
   },
   "devDependencies": {
