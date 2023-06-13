@@ -1,7 +1,7 @@
 {
   "name": "spur-config",
   "description": "Configuration framework to help manage complex application configurations in Node.js.",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "main": "./src/SpurConfig",
   "author": {
     "name": "Agustin Colchado",
@@ -40,9 +40,9 @@
   },
   "devDependencies": {
     "chai": "^4.3.7",
-    "eslint": "^8.29.0",
+    "eslint": "^8.42.0",
     "eslint-plugin-node": "^11.1.0",
     "mocha": "^10.2.0",
-    "sinon": "^15.0.1"
+    "sinon": "^15.1.2"
   }
 }
