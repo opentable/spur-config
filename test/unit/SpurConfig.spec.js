@@ -1,8 +1,8 @@
 const path = require('path');
 const SpurConfig = require('../../src/SpurConfig');
 
-describe('SpurConfig', () => {
-  beforeEach(function () {
+describe('SpurConfig', function () {
+  beforeEach(() => {
     this.srcBasePath = path.resolve(__dirname, '../../src/');
     this.jsFixtureConfigPath = path.resolve(__dirname, '../../test/fixtures/config/js/');
     this.SpurConfig = SpurConfig;
@@ -10,102 +10,104 @@ describe('SpurConfig', () => {
     process.env.NODE_ENV = 'test';
   });
 
-  it('should exist', function () {
-    expect(this.SpurConfig).to.exist;
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should exist', () => {
+    expect(this.SpurConfig).toBeDefined();
   });
 
   describe('initialization', () => {
-    it('should configure default path', function () {
+    it('should configure default path', () => {
       const subject = new SpurConfig(this.jsFixtureConfigPath);
-      expect(subject.folderPath).to.equal(this.jsFixtureConfigPath);
+      expect(subject.folderPath).toBe(this.jsFixtureConfigPath);
     });
 
-    it('should set internal plugins directory', function () {
+    it('should set internal plugins directory', () => {
       const subject = new SpurConfig(this.jsFixtureConfigPath);
-      expect(subject.defaultPluginsPath).to.equal(path.join(this.srcBasePath, './plugins'));
+      expect(subject.defaultPluginsPath).toBe(path.join(this.srcBasePath, './plugins'));
     });
 
-    it('should set custom plugins path', function () {
+    it('should set custom plugins path', () => {
       const subject = new SpurConfig(this.jsFixtureConfigPath);
-      expect(subject.customPluginsPath).to.equal(path.join(this.jsFixtureConfigPath, './plugins'));
+      expect(subject.customPluginsPath).toBe(path.join(this.jsFixtureConfigPath, './plugins'));
     });
 
-    it('should have empty properties', function () {
+    it('should have empty properties', () => {
       const subject = new SpurConfig(this.jsFixtureConfigPath);
-      expect(subject.baseObject).to.deep.equal({});
+      expect(subject.baseObject).toEqual({});
     });
 
-    it('should have empty plugins list', function () {
+    it('should have empty plugins list', () => {
       const subject = new SpurConfig(this.jsFixtureConfigPath);
-      expect(subject.plugins).to.deep.equal({});
+      expect(subject.plugins).toEqual({});
     });
 
-    it('should detect and set the configName from environment variable', function () {
+    it('should detect and set the configName from environment variable', () => {
       const subject = new SpurConfig(this.jsFixtureConfigPath);
-      expect(subject.configName).to.deep.equal('test');
+      expect(subject.configName).toBe('test');
     });
 
-    it('should detect and set the configName passed in', function () {
+    it('should detect and set the configName passed in', () => {
       const subject = new SpurConfig(this.jsFixtureConfigPath, 'ci');
-      expect(subject.configName).to.deep.equal('ci');
+      expect(subject.configName).toBe('ci');
     });
   });
 
   describe('environment', () => {
-    it('should get the environment from the environement variable', function () {
-      expect(this.SpurConfig.getEnv()).to.equal('test');
+    it('should get the environment from the environement variable', () => {
+      expect(this.SpurConfig.getEnv()).toBe('test');
     });
 
-    it('should use "development" environement variable when process does not have NODE_ENV', function () {
+    it('should use "development" environement variable when process does not have NODE_ENV', () => {
       delete process.env.NODE_ENV;
-      expect(this.SpurConfig.getEnv()).to.equal('development');
+      expect(this.SpurConfig.getEnv()).toBe('development');
     });
   });
 
   describe('plugins', () => {
-    it('should map the default plugins', function () {
+    it('should map the default plugins', () => {
       const subject = new SpurConfig(this.jsFixtureConfigPath, 'ci');
       subject.loadPlugins();
-      expect(subject.plugins).to.have.property('extends');
-      expect(subject.plugins).to.have.property('properties');
+      expect(subject.plugins).toHaveProperty('extends');
+      expect(subject.plugins).toHaveProperty('properties');
     });
 
-    it('should map the custom plugins in direcotry', function () {
+    it('should map the custom plugins in direcotry', () => {
       const subject = new SpurConfig(this.jsFixtureConfigPath, 'ci');
       subject.loadPlugins();
-      expect(subject.plugins).to.have.property('extends');
-      expect(subject.plugins).to.have.property('properties');
-      expect(subject.plugins).to.have.property('log4js');
-      expect(subject.plugins).to.have.property('addLog4jsAppender');
+      expect(subject.plugins).toHaveProperty('extends');
+      expect(subject.plugins).toHaveProperty('properties');
+      expect(subject.plugins).toHaveProperty('log4js');
+      expect(subject.plugins).toHaveProperty('addLog4jsAppender');
     });
   });
 
   describe('factories', () => {
-    it('loadEnv() should call load() with proper arguements', function () {
-      sinon.stub(this.SpurConfig, 'load');
+    it('loadEnv() should call load() with proper arguements', () => {
+      jest.spyOn(this.SpurConfig, 'load');
 
       this.SpurConfig.loadEnv(this.jsFixtureConfigPath);
 
-      expect(this.SpurConfig.load.getCall(0).args)
-        .to.deep.equal([this.jsFixtureConfigPath, 'test']);
-
-      this.SpurConfig.load.restore();
+      expect(this.SpurConfig.load).toHaveBeenCalledWith(this.jsFixtureConfigPath, 'test');
     });
 
-    it('should load the simple test configuration', function () {
+    it('should load the simple test configuration', () => {
       const result = this.SpurConfig.load(this.jsFixtureConfigPath, 'test');
+
       const config = result.getConfig();
 
-      expect(config.test).to.equal(true);
+      expect(config.test).toBe(true);
     });
 
-    it('should load the simple inheritance test configuration', function () {
+    it('should load the simple inheritance test configuration', () => {
       const result = this.SpurConfig.load(this.jsFixtureConfigPath, 'nested');
       const config = result.getConfig();
 
-      expect(config.environment).to.equal('nested');
-      expect(config).to.have.property('urls');
-      expect(config).to.have.property('prop1');
+      expect(config.environment).toBe('nested');
+      expect(config).toHaveProperty('urls');
+      expect(config).toHaveProperty('prop1');
     });
   });
 });
