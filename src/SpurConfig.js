@@ -1,7 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const _forEach = require('lodash.foreach');
-const _isFunction = require('lodash.isfunction');
 const _merge = require('lodash.merge');
 const requireAll = require('require-all');
 
@@ -60,9 +58,12 @@ class SpurConfig {
     }
   }
 
-  loadPluginsByObject(pluginsObject) {
-    _forEach(pluginsObject, (plugin, pluginName) => {
-      if (_isFunction(plugin)) {
+  loadPluginsByObject(pluginsObject = {}) {
+    const pluginNames = Object.keys(pluginsObject);
+
+    pluginNames.forEach((pluginName) => {
+      const plugin = pluginsObject[pluginName];
+      if (typeof plugin === 'function') {
         this.plugins[pluginName] = plugin.bind(this);
       } else {
         this.loadPluginsByObject(plugin);
